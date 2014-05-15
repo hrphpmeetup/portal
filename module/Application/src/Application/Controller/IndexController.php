@@ -11,11 +11,16 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use HrphpTwitter\Twitter\TwitterClient;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+    	$sl = $this->getServiceLocator();  
+   	    	   
+    	$twitterService = $sl->get('HrphpTwitter\Twitter\TwitterClient');
+    	    	
         return new ViewModel();
     }
 }

@@ -21,4 +21,7 @@
         "index-document": "index.php"
       }
    }  
+   "autoload":{
+        "files": ["vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php"]
+    } 
 }
