@@ -14,7 +14,9 @@
                 <h3 class="panel-title"><?php echo $this->translate('Twitter Feed') ?></h3>
             </div>
             <div class="panel-body">
-                
+            <?php foreach($twitterFeed as $tweet) :?>
+                <div><?php echo $tweet->text ?></div>
+            <?php endforeach?>
             </div>
         </div>
     </div>

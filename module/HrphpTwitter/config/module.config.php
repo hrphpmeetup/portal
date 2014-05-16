@@ -2,9 +2,9 @@
 
 return [
 	'twitter' => [
-		'oauth_access_token' => "_",
-	    'oauth_access_token_secret' => "_",
-	    'consumer_key' => "_",
-	    'consumer_secret' => "_",
+		'oauth_access_token' => "",
+	    'oauth_access_token_secret' => "",
+	    'consumer_key' => "",
+	    'consumer_secret' => "",
 	],
 ];

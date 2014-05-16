@@ -19,8 +19,10 @@ class IndexController extends AbstractActionController
     {
     	$sl = $this->getServiceLocator();  
    	    	   
-    	$twitterService = $sl->get('HrphpTwitter\Twitter\TwitterClient');
-    	    	
-        return new ViewModel();
+    	$twitterClient = $sl->get('HrphpTwitter\Twitter\TwitterClient');
+    	$tweets = $twitterClient->getUserFeed();    	
+        return new ViewModel(array(
+        	'twitterFeed' => $tweets,
+    	));
     }
 }
