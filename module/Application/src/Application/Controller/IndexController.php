@@ -17,12 +17,12 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	$sl = $this->getServiceLocator();  
-   	    	   
-    	$twitterClient = $sl->get('HrphpTwitter\Twitter\TwitterClient');
-    	$tweets = $twitterClient->getUserFeed();    	
+        $sl = $this->getServiceLocator();
+
+        $twitterClient = $sl->get('HrphpTwitter\Twitter\TwitterClient');
+        $tweets = $twitterClient->getUserFeed();
         return new ViewModel(array(
-        	'twitterFeed' => $tweets,
-    	));
+            'twitterFeed' => $tweets,
+        ));
     }
 }
