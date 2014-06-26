@@ -7,21 +7,23 @@ use Zend\Json\Json;
 
 class TwitterClientAdapter
 {
-    private $settings;
     /**@var TwitterAPIExchange */
     private $twitterClient;
 
-    public function setSettings($settings)
-    {
-        $this->settings = $settings;
-    }
-
     /**
-     * @param $twitterClient
+     * @param TwitterAPIExchange $twitterClient
      */
     public function setTwitterClient(TwitterAPIExchange $twitterClient)
     {
         $this->twitterClient = $twitterClient;
+    }
+
+    /**
+     * @return TwitterAPIExchange
+     */
+    public function getTwitterClient()
+    {
+        return $this->twitterClient;
     }
 
     public function getUserFeed()
@@ -33,11 +35,10 @@ class TwitterClientAdapter
         $getfield = '?screen_name=hrphpmeetup';
         $requestMethod = 'GET';
 
-        $tweets = $this->twitterClient->setGetfield($getfield)
-                     ->buildOauth($url, $requestMethod)
-                     ->performRequest();
+        $this->twitterClient->setGetfield($getfield);
+        $this->twitterClient->buildOauth($url, $requestMethod);
+        $tweets = $this->twitterClient->performRequest();
         $phpFeed = Json::decode($tweets, Json::TYPE_OBJECT);
         return $phpFeed;
-
     }
 }

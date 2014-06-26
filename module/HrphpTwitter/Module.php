@@ -2,8 +2,9 @@
 
 namespace HrphpTwitter;
 
+use HrphpTwitter\Twitter\TwitterClientAdapter;
 use Zend\Mvc\MvcEvent;
-use HrphpTwitter\Twitter\TwitterClient;
+use \TwitterAPIExchange;
 
 class Module
 {
@@ -36,15 +37,16 @@ class Module
             ),
             'factories' => array(
                 'HrphpTwitter\Twitter\TwitterClient' => function ($sm) {
-                $client = new TwitterClient();
-                $settings = array(
-                        'oauth_access_token' => $sm->get('config')['twitter']['oauth_access_token'],
-                       'oauth_access_token_secret' => $sm->get('config')['twitter']['oauth_access_token_secret'],
-                       'consumer_key' => $sm->get('config')['twitter']['consumer_key'],
-                       'consumer_secret' => $sm->get('config')['twitter']['consumer_secret']
-                );
-                $client->setSettings($settings);
-                return $client;
+                    $clientAdapter = new TwitterClientAdapter();
+                    $settings = array(
+                           'oauth_access_token' => $sm->get('config')['twitter']['oauth_access_token'],
+                           'oauth_access_token_secret' => $sm->get('config')['twitter']['oauth_access_token_secret'],
+                           'consumer_key' => $sm->get('config')['twitter']['consumer_key'],
+                           'consumer_secret' => $sm->get('config')['twitter']['consumer_secret']
+                    );
+                    $twitterClient = new TwitterAPIExchange($settings);
+                    $clientAdapter->setTwitterClient($twitterClient);
+                    return $clientAdapter;
                 }
         ));
     }
