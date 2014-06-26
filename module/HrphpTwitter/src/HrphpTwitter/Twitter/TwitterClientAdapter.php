@@ -2,16 +2,26 @@
  
 namespace HrphpTwitter\Twitter;
 
-use TwitterAPIExchange;
+use \TwitterAPIExchange;
 use Zend\Json\Json;
 
-class TwitterClient
+class TwitterClientAdapter
 {
     private $settings;
+    /**@var TwitterAPIExchange */
+    private $twitterClient;
 
     public function setSettings($settings)
     {
         $this->settings = $settings;
+    }
+
+    /**
+     * @param $twitterClient
+     */
+    public function setTwitterClient(TwitterAPIExchange $twitterClient)
+    {
+        $this->twitterClient = $twitterClient;
     }
 
     public function getUserFeed()
@@ -23,8 +33,7 @@ class TwitterClient
         $getfield = '?screen_name=hrphpmeetup';
         $requestMethod = 'GET';
 
-        $twitter = new \TwitterAPIExchange($this->settings);
-        $tweets = $twitter->setGetfield($getfield)
+        $tweets = $this->twitterClient->setGetfield($getfield)
                      ->buildOauth($url, $requestMethod)
                      ->performRequest();
         $phpFeed = Json::decode($tweets, Json::TYPE_OBJECT);
