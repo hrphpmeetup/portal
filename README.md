@@ -85,10 +85,9 @@ exposes security vulnerabilities.  Because we can not release our group's twitte
  dev twitter application and add that application's keys and tokens to a local config file that will stay on your local machine only.  Doing this
  allows developers to authenticate with the twitter API (and therefore not be able to reach the API) and run the site locally.
 
-
-Creating Twitter Dev application
 **Note: Must have twitter account to create a twitter application
 
+Creating Twitter Dev application
 * Go to https://dev.twitter.com/
 * Click "Sign in" and sign in with your twitter account credentials
 * Click on your picture in the top right, then "my applications"
