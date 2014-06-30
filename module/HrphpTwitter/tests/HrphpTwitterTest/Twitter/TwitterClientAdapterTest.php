@@ -36,6 +36,6 @@ class TwitterClientAdapterTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($this->twitterApiResponseFixture->getMockUserFeedResponse()));
         $this->twitterClientAdapter->setTwitterClient($this->mockTwitterClient);
         $tweet = $this->twitterClientAdapter->getUserFeed();
-        $this->assertEquals('LT: Please try and rsvp early http://t.co/LjrPw2Tvzz so we get a good idea what attendence will be like, and plan accordingly', $tweet[0]->text);
+        $this->assertEquals('Test tweet content', $tweet[0]->text);
     }
 }
