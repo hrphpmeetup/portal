@@ -9,10 +9,12 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "~2.0"
+        "zendframework/zendframework": "~2.0",
+        "j7mbo/twitter-api-php": "dev-master"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "~1.5"
+        "squizlabs/php_codesniffer": "~1.5",
+        "phpunit/phpunit": "3.7.*"
     },
     "extra": {
       "heroku": {
@@ -20,5 +22,5 @@
         "document-root": "public",
         "index-document": "index.php"
       }
-   }  
+   }
 }
